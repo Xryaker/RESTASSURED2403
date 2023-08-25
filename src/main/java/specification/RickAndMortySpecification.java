@@ -1,6 +1,7 @@
 package specification;
 
 import groovyjarjarantlr4.v4.codegen.model.SrcOp;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -13,6 +14,7 @@ public class RickAndMortySpecification {
                 .setRelaxedHTTPSValidation()
                 .setBaseUri(baseURL)
                 .setContentType(ContentType.JSON)
+                .addFilter(new AllureRestAssured())
                 .build();
         RestAssured.responseSpecification=new ResponseSpecBuilder()
                 .expectStatusCode(200)
